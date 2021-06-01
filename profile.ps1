@@ -1,4 +1,4 @@
-#Version 0.1.8
+#Version 0.2.0
 #Updated 2021-06-01
 
 #Clear the gubbins and inform usr of update check
@@ -66,5 +66,5 @@ function Prompt {
 #>
 #Import-Module posh-git;
 Import-Module oh-my-posh;
-Set-PoshPrompt -theme stelbent.minimal;
+Set-PoshPrompt -theme "stelbent.minimal";
 #Clear-Host;
