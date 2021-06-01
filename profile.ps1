@@ -1,12 +1,12 @@
-#Version 0.1.2
-#Updated 2021-05-24
+#Version 0.1.3
+#Updated 2021-06-01
 
 #Profile URL
 $GithubFileURL = 'https://raw.githubusercontent.com/dark-coffee/dollar-profile/main/profile.ps1'
 
 #Define Files
-$GithubFile = Invoke-WebRequest $GithubFileURL
-$ProfileFile = Get-Content $PROFILE
+$GithubFile = Invoke-WebRequest $GithubFileURL;
+$ProfileFile = Get-Content $PROFILE;
 
 #Pull Versions from Files
 $CurrentVersion = $ProfileFile[0] -replace '#Version '
@@ -25,7 +25,7 @@ If($GitVersion -gt $CurrentVersion){
         }
     }
 }else{
-    Write-Host "We're up-to-date!"
+    Write-Host "PowerShell profile up-to-date!"
 }
 
 #Prompt
@@ -45,3 +45,6 @@ function Prompt {
 * profile colours
 * oh my posh?
 #>
+Import-Module posh-git;
+Import-Module oh-my-posh;
+Set-PoshPrompt -theme Paradox;
