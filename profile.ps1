@@ -1,4 +1,4 @@
-#Version 0.1.5
+#Version 0.1.6
 #Updated 2021-06-01
 
 #Clear the gubbins and inform usr of update check
@@ -22,6 +22,7 @@ $GitVersion = $GithubFile[9..14] | Join-String
 Write-Host ''
 Write-Host "Current profile version: $CurrentVersion"
 Write-Host "Github profile version:  $GitVersion"
+Write-Host ''
 
 #Update Mechanism
 If($GitVersion -gt $CurrentVersion){
@@ -29,16 +30,22 @@ If($GitVersion -gt $CurrentVersion){
     If(($UserChoice -eq "Y") -or ($UserChoice -eq "")){
         try{
             Start-BitsTransfer -Source $GithubFileURL -Destination $PROFILE -ErrorAction Stop
-            Write-Host 'Updated!'
+            Write-Host 'Profile updated!'
+            Write-Host 'Changes will take effect on reload'
         }
         catch{
             Write-Host "Uh Oh! We hit an error :("
         }
+    }else{
+        Write-Host "We'll try again next time"
     }
 }else{
-    Write-Host "PowerShell profile up-to-date!"
+    Write-Host "Profile up-to-date!"
 }
-Write-Host '----------------------------------'
+Write-Host '----------------------------------';
+Write-Host 'Clearing host in 3 seconds . . .  ';
+Write-Host '----------------------------------';
+Clear-Host;
 
 #Prompt
 
@@ -55,9 +62,9 @@ function Prompt {
 ** dbatools
 
 * profile colours
-* oh my posh?
+** oh my posh
 #>
-Import-Module posh-git;
+#Import-Module posh-git;
 Import-Module oh-my-posh;
-Set-PoshPrompt -theme Paradox;
+Set-PoshPrompt -theme hotstick.minimal;
 #Clear-Host;
