@@ -1,4 +1,4 @@
-#Version 0.1.6
+#Version 0.1.7
 #Updated 2021-06-01
 
 #Clear the gubbins and inform usr of update check
@@ -16,7 +16,7 @@ $ProfileFile = Get-Content $PROFILE;
 
 #Pull Versions from Files
 $CurrentVersion = $ProfileFile[0] -replace '#Version '
-$GitVersion = $GithubFile[9..14] | Join-String
+$GitVersion = $GithubFile[9..13] | Join-String
 
 #Feed back to screen
 Write-Host ''
@@ -34,7 +34,7 @@ If($GitVersion -gt $CurrentVersion){
             Write-Host 'Changes will take effect on reload'
         }
         catch{
-            Write-Host "Uh Oh! We hit an error :("
+            Write-Host "Uh oh! We hit an error :("
         }
     }else{
         Write-Host "We'll try again next time"
@@ -48,7 +48,6 @@ Write-Host '----------------------------------';
 Clear-Host;
 
 #Prompt
-
 function Prompt {
 
     #Force .NET and PS Dirs to match
