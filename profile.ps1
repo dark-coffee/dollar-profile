@@ -1,5 +1,9 @@
-#Version 0.1.3
+#Version 0.1.4
 #Updated 2021-06-01
+
+#Clear the gubbins and inform usr of update check
+Clear-Host
+Write-Host 'Checking for profile updates . . .'
 
 #Profile URL
 $GithubFileURL = 'https://raw.githubusercontent.com/dark-coffee/dollar-profile/main/profile.ps1'
@@ -11,6 +15,10 @@ $ProfileFile = Get-Content $PROFILE;
 #Pull Versions from Files
 $CurrentVersion = $ProfileFile[0] -replace '#Version '
 $GitVersion = $GithubFile[9..14] | Join-String
+
+#Feedback to screen
+Write-Host "Current profile version: $CurrentVersion"
+Write-Host "Github profile version:  $GitVersion"
 
 #Update Mechanism
 If($GitVersion -gt $CurrentVersion){
@@ -48,3 +56,4 @@ function Prompt {
 Import-Module posh-git;
 Import-Module oh-my-posh;
 Set-PoshPrompt -theme Paradox;
+#Clear-Host;
