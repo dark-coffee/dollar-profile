@@ -1,8 +1,10 @@
-#Version 0.1.4
+#Version 0.1.5
 #Updated 2021-06-01
 
 #Clear the gubbins and inform usr of update check
 Clear-Host
+Write-Host 'Welcome back, Andy!'
+Write-Host '----------------------------------'
 Write-Host 'Checking for profile updates . . .'
 
 #Profile URL
@@ -16,7 +18,8 @@ $ProfileFile = Get-Content $PROFILE;
 $CurrentVersion = $ProfileFile[0] -replace '#Version '
 $GitVersion = $GithubFile[9..14] | Join-String
 
-#Feedback to screen
+#Feed back to screen
+Write-Host ''
 Write-Host "Current profile version: $CurrentVersion"
 Write-Host "Github profile version:  $GitVersion"
 
@@ -35,6 +38,7 @@ If($GitVersion -gt $CurrentVersion){
 }else{
     Write-Host "PowerShell profile up-to-date!"
 }
+Write-Host '----------------------------------'
 
 #Prompt
 
