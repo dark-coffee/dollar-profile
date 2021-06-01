@@ -9,7 +9,7 @@ Write-Host 'Checking for profile updates . . .'
 $GithubFileURL = 'https://raw.githubusercontent.com/dark-coffee/dollar-profile/main/profile.ps1'
 
 #Define Files
-$GithubFile = Invoke-WebRequest $GithubFileURL;
+$GithubFile = Invoke-WebRequest $GithubFileURL | Select-Object -ExpandProperty Content;
 $ProfileFile = Get-Content $PROFILE;
 
 #Pull Versions from Files
