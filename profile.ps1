@@ -1,4 +1,4 @@
-#Version 0.3.2
+#Version 0.3.3
 #Updated 02021-08-04
 
 #Clear the gubbins and inform usr of update check
@@ -47,7 +47,7 @@ Write-Host '----------------------------------';
 Write-Host 'Clearing host in 3 seconds . . .  ';
 Write-Host '----------------------------------';
 Start-Sleep 3;
-Clear-Host;
+#Clear-Host;
 
 #Prompt
 function Prompt {
