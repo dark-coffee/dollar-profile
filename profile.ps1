@@ -1,4 +1,4 @@
-#Version 0.3.1
+#Version 0.3.2
 #Updated 02021-08-04
 
 #Clear the gubbins and inform usr of update check
@@ -11,6 +11,7 @@ Write-Host 'Checking for profile updates . . .';
 $GithubFileURL = 'https://raw.githubusercontent.com/dark-coffee/dollar-profile/main/profile.ps1';
 
 #Define Files
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 $GithubFile = Invoke-WebRequest $GithubFileURL | Select-Object -ExpandProperty Content;
 $ProfileFile = Get-Content $PROFILE;
 
