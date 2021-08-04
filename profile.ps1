@@ -1,4 +1,4 @@
-#Version 0.3.3
+#Version 0.3.4
 #Updated 02021-08-04
 
 #Clear the gubbins and inform usr of update check
@@ -44,9 +44,8 @@ If($GitVersion -gt $CurrentVersion){
     Write-Host "Profile up-to-date!"
 };
 Write-Host '----------------------------------';
-Write-Host 'Clearing host in 3 seconds . . .  ';
+Write-Host 'Customizing Prompt';
 Write-Host '----------------------------------';
-Start-Sleep 3;
 #Clear-Host;
 
 #Prompt
@@ -105,4 +104,8 @@ If(Test-Path $OhMyPosh_Themes_Dir){
     Write-Warning "oh-my-posh themes directory not found. This action requires oh-my-posh."
 }
 
+Write-Host '----------------------------------';
+Write-Host 'Clearing host in 3 seconds . . .  ';
+Write-Host '----------------------------------';
+Start-Sleep 3;
 Clear-Host;
