@@ -1,5 +1,5 @@
-#Version 0.3.0
-#Updated 2021-06-01
+#Version 0.3.1
+#Updated 02021-08-04
 
 #Clear the gubbins and inform usr of update check
 Clear-Host;
@@ -104,4 +104,4 @@ If(Test-Path $OhMyPosh_Themes_Dir){
     Write-Warning "oh-my-posh themes directory not found. This action requires oh-my-posh."
 }
 
-#Clear-Host;
+Clear-Host;
