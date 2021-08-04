@@ -1,4 +1,4 @@
-#Version 0.2.0
+#Version 0.3.0
 #Updated 2021-06-01
 
 #Clear the gubbins and inform usr of update check
@@ -66,5 +66,42 @@ function Prompt {
 #>
 #Import-Module posh-git;
 Import-Module oh-my-posh;
-Set-PoshPrompt -theme "stelbent.minimal";
+#Set-PoshPrompt -theme "stelbent.minimal";
+
+#Set oh-my-posh Prompt Theme
+#Detect Modules Dir (OneDrive compatible)
+$ModulesDir = "$($profile -replace "$($profile -replace ".*\\")")Modules"
+
+#Detect oh-my-posh themes dir
+$OhMyPosh_Themes_Dir = Get-Childitem "$modulesdir\oh-my-posh\" -Recurse -Directory | Where-Object name -eq 'themes' | Select-Object -ExpandProperty FullName
+
+#Custom Theme URL
+$PoshThemeURL = 'https://raw.githubusercontent.com/dark-coffee/dollar-profile/main/oh-my-posh/darkcoffee.minimal.omp.json';
+
+#Logic to check for, install, and set custom theme
+If(Test-Path $OhMyPosh_Themes_Dir){
+    Write-Host "oh-my-posh themes directory found"
+    If(!(Test-Path $OhMyPosh_Themes_Dir\darkcoffee.minimal.omp.json)){
+        Write-Warning "Custom theme not found"
+        Write-Host "Installing . . ."
+        try{
+            Start-BitsTransfer -Source $PoshThemeURL -Destination $OhMyPosh_Themes_Dir\darkcoffee.minimal.omp.json -ErrorAction Stop
+            Write-Host 'Installed'
+            Write-Host 'Setting prompt theme'
+            Set-PoshPrompt -theme darkcoffee.minimal
+            Write-Host 'Prompt theme set'
+        }
+        catch{
+            Write-Warning "Uh oh! We hit an error :("
+        }
+    }else{
+        Write-Host "Custom theme found"
+        Write-Host 'Setting prompt theme'
+        Set-PoshPrompt -theme darkcoffee.minimal
+        Write-Host 'Prompt theme set'
+    }
+}else{
+    Write-Warning "oh-my-posh themes directory not found. This action requires oh-my-posh."
+}
+
 #Clear-Host;
