@@ -1,4 +1,4 @@
-#Version 0.3.5
+#Version 0.3.6
 #Updated 02021-08-04
 
 
@@ -81,7 +81,7 @@ $ModulesDir = "$($profile -replace "$($profile -replace ".*\\")")Modules"
 #-----------------------------------------------------------------------#
 
 #Detect and Install: GetDirectory
-If(!(Test-Path $ModulesDir\GetDirectory)){Install-Module Get-Directory -Scope CurrentUser}
+If(!(Test-Path $ModulesDir\GetDirectory)){Install-Module GetDirectory -Scope CurrentUser}
 
 #Detect and Install: oh-my-posh
 If(!(Test-Path $ModulesDir\oh-my-posh)){Install-Module oh-my-posh -Scope CurrentUser}
